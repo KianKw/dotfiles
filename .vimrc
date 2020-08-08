@@ -66,24 +66,17 @@ endif
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.sql exec ":call SetTitle()" 
 ""定义函数SetTitle，自动插入文件头 
 func SetTitle() 
+	call setline(1, "/*************************************************************************") 
+	call append(line("."), "\# File Name: ".expand("%")) 
+	call append(line(".")+1, "\# Author: Kian Kwok") 
+	call append(line(".")+2, "\# Mail: kiankwok6@gmail.com") 
+	call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+	call append(line(".")+4, " ************************************************************************/") 
+	call append(line(".")+5, "")
 	"如果文件类型为.sh文件 
-	if &filetype == 'sh' 
-		call setline(1,"\#########################################################################") 
-		call append(line("."), "\# File Name: ".expand("%")) 
-		call append(line(".")+1, "\# Author: Kian Kwok") 
-		call append(line(".")+2, "\# Mail: kiankwok6@gmail.com") 
-		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
-		call append(line(".")+4, "\#########################################################################") 
-		call append(line(".")+5, "\#!/bin/bash") 
-		call append(line(".")+6, "") 
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "\# File Name: ".expand("%")) 
-		call append(line(".")+1, "\# Author: Kian Kwok") 
-		call append(line(".")+2, "\# Mail: kiankwok6@gmail.com") 
-		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
-		call append(line(".")+5, "")
+	if &filetype == 'sh'
+		call append(line(".")+6, "\#!/bin/bash") 
+        call append(line(".")+7, "")
 	endif
 	"if &filetype == 'cpp'
 	"	call append(line(".")+6, "#include <iostream>")
