@@ -1,22 +1,9 @@
-map <F9> :call SaveInputData()<CR>
-func! SaveInputData()
-	exec "tabnew"
-	exec 'normal "+gP'
-	exec "w! /tmp/input_data"
-endfunc
-
-
-
-
 "colorscheme torte
 "colorscheme murphy
 "colorscheme desert 
 "colorscheme desert 
 "colorscheme elflord
 colorscheme ron
-
-
-
 
 "set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 "set termencoding=utf-8
